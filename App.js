@@ -16,6 +16,9 @@ export default function App() {
         <Stack.Screen
         name='About'
         component={Aboutscreen}
+        initialParams={{
+          name: "guest"
+        }}
         />
       </Stack.Navigator>
     </NavigationContainer>
