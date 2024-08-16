@@ -6,44 +6,50 @@ import { Pressable, Text } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+export const AboutStack = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home' screenOptions={{
-        headerStyle: {
-          backgroundColor: "#6a51ae"
-        },
-        headerTintColor: "#fff",
-        headerTitleStyle: {
-          fontWeight: "bold"
-        },
-        headerRight: () => (
-          <Pressable onPress={()=> alert('Menu btn press')} >
-            <Text style={{color: "white", fontSize: 16}} >Menu</Text>
-          </Pressable>
-        ),
-        contentStyle: {
-          backgroundColor: "#e8e4"
-        }
-      }}>
-        <Stack.Screen
+    <Stack.Navigator initialRouteName='Home' screenOptions={{
+      headerStyle: {
+        backgroundColor: "#6a51ae"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold"
+      },
+      headerRight: () => (
+        <Pressable onPress={() => alert('Menu btn press')} >
+          <Text style={{ color: "white", fontSize: 16 }} >Menu</Text>
+        </Pressable>
+      ),
+      contentStyle: {
+        backgroundColor: "#e8e4"
+      }
+    }}>
+      <Stack.Screen
         name='Home'
         component={Homescreen}
         options={{
           title: "welcome home",
         }}
-        />
-        <Stack.Screen
+      />
+      <Stack.Screen
         name='About'
         component={Aboutscreen}
         initialParams={{
           name: "guest"
         }}
-        //options={({route})=>({
-        // title: route.params.name
-        //})}
-        />
-      </Stack.Navigator>
+      //options={({route})=>({
+      // title: route.params.name
+      //})}
+      />
+    </Stack.Navigator>
+  )
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <AboutStack />
     </NavigationContainer>
   );
 }
